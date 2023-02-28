@@ -1,0 +1,57 @@
+//Enter code here
+function UseSideLane(arr){
+let stack=[];
+let ans=arr;
+while(ans.length!==0){
+    let temp=ans.pop();
+    while(stack.length !== 0 && stack[stack.length-1]>temp){
+        ans.push(stack.pop());
+        
+    }
+    stack.push(temp)
+}
+return stack;
+}
+function runProgram(input){
+ input=input.split('\n');
+ let line=0;
+ while(true){
+     let n= +input[line++];
+     if(n===0){
+         break;
+     }
+     let arr= input[line++].trim().split(' ').map(Number);
+     let res= UseSideLane(arr);
+     
+     let flag=true;
+     for(let i=0;i<res.length-1;i++){
+         if(res[i]>res[i+1]){
+             flag=false;
+             break;
+         }
+     }
+     console.log(flag? "yes":"no")
+ }
+ }
+    
+
+if (process.env.USERNAME === "") {
+     runProgram(``);
+ } else {
+     process.stdin.resume();
+     process.stdin.setEncoding("ascii");
+     let read = "";
+     process.stdin.on("data", function (input) {
+         read += input;
+     });
+     process.stdin.on("end", function () {
+         read = read.replace(/\n$/, "");
+         read = read.replace(/\n$/, "");
+         runProgram(read);
+     });
+     process.on("SIGINT", function () {
+         read = read.replace(/\n$/, "");
+         runProgram(read);
+         process.exit(0);
+     });
+ }

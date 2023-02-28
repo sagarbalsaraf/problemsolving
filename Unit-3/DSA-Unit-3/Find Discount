@@ -1,0 +1,47 @@
+//Enter code here
+function findDis(t,n,arr){
+    let ptr2;
+    for(let i=0;i<n;i++){
+       ptr2=i+1;
+       while(ptr2< n && ptr2 > i && arr[i]< arr[ptr2]){
+           ptr2++;
+       }
+       if(ptr2< n && ptr2 > i && arr[i]>=arr[ptr2]){
+           arr[i] -= arr[ptr2]
+       }
+    }
+    console.log(arr.join(' '))
+}
+function runProgram(input){
+    input=input.split('\n');
+    let t=+input[0];
+    let line=1;
+    for(let i=0;i<t;i++){
+        let n=+input[line];
+        line++;
+        let arr=input[line].split(' ').map(Number);
+        line++;
+        findDis(t,n,arr);
+    } 
+}
+if (process.env.USERNAME === "") {
+     runProgram(``);
+ } else {
+     process.stdin.resume();
+     process.stdin.setEncoding("ascii");
+     let read = "";
+     process.stdin.on("data", function (input) {
+         read += input;
+     });
+     process.stdin.on("end", function () {
+         read = read.replace(/\n$/, "");
+         read = read.replace(/\n$/, "");
+         runProgram(read);
+     });
+     process.on("SIGINT", function () {
+         read = read.replace(/\n$/, "");
+         runProgram(read);
+         process.exit(0);
+     });
+ }
+

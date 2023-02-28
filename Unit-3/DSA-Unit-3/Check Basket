@@ -1,0 +1,18 @@
+function checkBasket(N,B){
+    // write code here
+    let obj={};
+    for(let i=0;i<B.length;i++){
+        obj[B[i]]=(obj[B[i]] || 0)+1
+    }
+    let c=0;
+    for(key in obj){
+        if(key){
+            c++;
+        }
+    }
+    if(c==1){
+        console.log('Single Type')
+    }else{
+        console.log('Mixed Basket')
+    }
+}

@@ -1,0 +1,18 @@
+function nTraversal(matrix) {
+ let bag="", bag2="";
+ let row=matrix.length;
+ let col=matrix[0].length;
+ for(let i=0;i<row;i++){
+     for(let j=0;j<col;j++){
+         if(j==0){
+             bag=matrix[i][j]+" "+bag;
+         }else if( i==j && i!=0){
+             bag+=matrix[i][j]+" ";
+         }else if(j==col-1 && i!=row-1){
+             bag2=matrix[i][j]+" "+bag2;
+
+         }
+     }
+ }
+ console.log(bag+bag2);
+}

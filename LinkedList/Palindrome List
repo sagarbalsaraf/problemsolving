@@ -1,0 +1,31 @@
+const LinkedListNode = class {
+    constructor(nodeData) {
+        this.data = nodeData;
+        this.next = null;
+    }
+};
+// Complete the function below
+var isPalindrome = function (head) {
+    
+    let left = null;
+  let right = null;
+  let pt1 = head;
+  let pt2 = head;
+  let temp = null;
+
+  while (pt2 && pt2.next) {
+    pt2 = pt2.next.next;
+    temp = pt1.next;
+    pt1.next = left;
+    left = pt1;
+    pt1 = temp;
+  }
+  right = pt2 ? pt1.next : pt1;
+  while (left && right) {
+    if (left.data !== right.data) return false;
+    left = left.next;
+    right = right.next;
+  }
+  
+  return true;
+};

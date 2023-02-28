@@ -1,0 +1,58 @@
+    //Enter code here
+function sringsWithParenthesis(str){
+    let stack=[];
+    let c=0;
+    let peek;
+    for(let i=0;i<str.length;i++){
+        if(str[i]==")" || str[i]=="}" || str[i]=="]" || str[i]=="(" || str[i]=="[" || str[i]=="{"){
+            c++;
+        }
+    }
+    if(c%2==1){
+        console.log("unbalanced")
+    }else{
+        for(let i=0;i<str.length;i++){
+            let peek = stack[stack.length-1];
+            if(str[i]==")" || str[i]=="(" || str[i]=="}" || str[i]=="{" || str[i]=="[" || str[i]=="]"){
+                c++;
+            }
+            if(str[i]=="(" || str[i]=="[" || str[i]=="{"){
+                stack.push(str[i])
+            }
+            if(str[i]==")" && peek=="(" || str[i]=="}" && peek=="{" || str[i]=="]" && peek=="["){
+                stack.pop()
+            }
+        }
+        if(stack.length==0){
+            console.log("balanced")
+        }
+        else{
+            console.log("unbalanced")
+        }
+    }
+
+}
+function runProgram(input){
+    let str=input;
+    sringsWithParenthesis(str);
+}
+if (process.env.USERNAME === "") {
+     runProgram(``);
+ } else {
+     process.stdin.resume();
+     process.stdin.setEncoding("ascii");
+     let read = "";
+     process.stdin.on("data", function (input) {
+         read += input;
+     });
+     process.stdin.on("end", function () {
+         read = read.replace(/\n$/, "");
+         read = read.replace(/\n$/, "");
+         runProgram(read);
+     });
+     process.on("SIGINT", function () {
+         read = read.replace(/\n$/, "");
+         runProgram(read);
+         process.exit(0);
+     });
+ }

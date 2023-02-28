@@ -1,0 +1,43 @@
+//Enter code here
+function uniqueChar(str){
+    let temp;
+    let obj=[];
+    for(let i=0;i<str.length;i++){
+        obj[str[i]]=(obj[str[i]] || 0)+1
+        }
+        for(let key in obj){
+            if(obj[key]==1){
+                temp=key;
+                break;
+            }
+            
+        }
+        temp ? console.log(temp): console.log("Not Found")
+    }
+
+ 
+
+function runProgram(input){
+    let str=input
+    uniqueChar(str)
+}
+if (process.env.USERNAME === "") {
+     runProgram(``);
+ } else {
+     process.stdin.resume();
+     process.stdin.setEncoding("ascii");
+     let read = "";
+     process.stdin.on("data", function (input) {
+         read += input;
+     });
+     process.stdin.on("end", function () {
+         read = read.replace(/\n$/, "");
+         read = read.replace(/\n$/, "");
+         runProgram(read);
+     });
+     process.on("SIGINT", function () {
+         read = read.replace(/\n$/, "");
+         runProgram(read);
+         process.exit(0);
+     });
+ }

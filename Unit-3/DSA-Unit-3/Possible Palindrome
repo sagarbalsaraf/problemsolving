@@ -1,0 +1,48 @@
+//Enter code here
+function PossiblePalindrome(t,str){
+  
+   let obj={};
+   let c=0;
+   for(let i=0; i<str.length;i++){
+        obj[str[i]]=(obj[str[i]]||0)+1
+    }
+    for(let key in obj){
+        if(obj[key]%2==1){
+            c++;
+        }
+    }
+  c<=1? console.log('Yes'): console.log('No')
+   
+}
+
+function runProgram(input){
+    input=input.split('\n');
+    let t= +input[0];
+    let line=1;
+    for(let i=0;i<t;i++){
+        let str=input[line]
+        line++
+    PossiblePalindrome(t,str)
+    }
+    
+}
+if (process.env.USERNAME === "") {
+     runProgram(``);
+ } else {
+     process.stdin.resume();
+     process.stdin.setEncoding("ascii");
+     let read = "";
+     process.stdin.on("data", function (input) {
+         read += input;
+     });
+     process.stdin.on("end", function () {
+         read = read.replace(/\n$/, "");
+         read = read.replace(/\n$/, "");
+         runProgram(read);
+     });
+     process.on("SIGINT", function () {
+         read = read.replace(/\n$/, "");
+         runProgram(read);
+         process.exit(0);
+     });
+ }

@@ -1,0 +1,36 @@
+function revStr(t,str){
+    let stack=[];
+    for(let i=0;i<str.length;i++){
+        stack.push(str[i])
+    }
+    console.log(stack.reverse().join(""))
+}
+
+function runProgram(input){
+     input=input.split('\n');
+    let t=+input[0];
+    for(let i=1;i<=t;i++){
+        let str=input[i];
+    revStr(t,str)
+    }
+}
+if (process.env.USERNAME === "") {
+     runProgram(``);
+ } else {
+     process.stdin.resume();
+     process.stdin.setEncoding("ascii");
+     let read = "";
+     process.stdin.on("data", function (input) {
+         read += input;
+     });
+     process.stdin.on("end", function () {
+         read = read.replace(/\n$/, "");
+         read = read.replace(/\n$/, "");
+         runProgram(read);
+     });
+     process.on("SIGINT", function () {
+         read = read.replace(/\n$/, "");
+         runProgram(read);
+         process.exit(0);
+     });
+ }

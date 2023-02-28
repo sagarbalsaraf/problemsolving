@@ -1,0 +1,40 @@
+//Enter code here
+
+function runProgram(input){
+   input=input.split('\n');
+let t=+input[0];
+let line=1;
+let arr=[];
+
+for(let i=1;i<=t;i++){
+    let [X,Y]=input[line++].split(' ');
+    
+    if(X==1){
+        arr.push(Y)
+    }else if(arr.length==0){
+        console.log("No More Tokens")
+    }else if(X==2){
+        console.log(arr.shift())
+    }
+}
+}
+if (process.env.USERNAME === "") {
+     runProgram(``);
+ } else {
+     process.stdin.resume();
+     process.stdin.setEncoding("ascii");
+     let read = "";
+     process.stdin.on("data", function (input) {
+         read += input;
+     });
+     process.stdin.on("end", function () {
+         read = read.replace(/\n$/, "");
+         read = read.replace(/\n$/, "");
+         runProgram(read);
+     });
+     process.on("SIGINT", function () {
+         read = read.replace(/\n$/, "");
+         runProgram(read);
+         process.exit(0);
+     });
+ }

@@ -1,0 +1,42 @@
+//Enter code here
+function runProgram(input){
+  input=input.split('\n');
+  let t=+input[0];
+  let arrQ=[];
+  let line=1;
+    for(let i=1;i<=t;i++){
+        let [x,y]=input[line++].split(' ');
+        let bag="";
+        if(x=="E"){
+           arrQ.push(y);
+           console.log(arrQ.length)
+        }else if(x=="D" && arrQ.length!=0){
+            bag+=arrQ.shift()+" ";
+           bag+=arrQ.length;
+           
+           console.log(bag)
+        }else{
+            console.log("-1",arrQ.length)
+        }
+    }
+}
+if (process.env.USERNAME === "") {
+     runProgram(``);
+ } else {
+     process.stdin.resume();
+     process.stdin.setEncoding("ascii");
+     let read = "";
+     process.stdin.on("data", function (input) {
+         read += input;
+     });
+     process.stdin.on("end", function () {
+         read = read.replace(/\n$/, "");
+         read = read.replace(/\n$/, "");
+         runProgram(read);
+     });
+     process.on("SIGINT", function () {
+         read = read.replace(/\n$/, "");
+         runProgram(read);
+         process.exit(0);
+     });
+ }

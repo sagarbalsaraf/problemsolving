@@ -1,0 +1,57 @@
+function sequenceValidation(t,n,a1,a2){
+    let stack=[];
+    let pushIndex=0;
+    let popIndex=0;
+    let flag=true;
+    while(pushIndex < a1.length){
+        if(stack[stack.length-1]!==a2[popIndex]){
+            stack.push(a1[pushIndex++])
+        }else{
+            stack.pop();
+            popIndex+=1;
+        }
+    }
+    while(stack.length){
+        if(stack.pop() !==a2[popIndex++]){
+           flag=false 
+        }
+    }
+    
+    
+    flag==true ? console.log(1) : console.log(0)
+}
+
+function runProgram(input){
+    input=input.split('\n');
+    let t=+input[0];
+    let line=1;
+    for(let i=1;i<=t;i++){
+        let n=+input[line];
+        line++;
+        let a1=input[line].split(" ").map(Number);
+        line++;
+        let a2=input[line].split(" ").map(Number);
+        line++;
+        sequenceValidation(t,n,a1,a2);
+    }
+}
+if (process.env.USERNAME === "") {
+     runProgram(``);
+ } else {
+     process.stdin.resume();
+     process.stdin.setEncoding("ascii");
+     let read = "";
+     process.stdin.on("data", function (input) {
+         read += input;
+     });
+     process.stdin.on("end", function () {
+         read = read.replace(/\n$/, "");
+         read = read.replace(/\n$/, "");
+         runProgram(read);
+     });
+     process.on("SIGINT", function () {
+         read = read.replace(/\n$/, "");
+         runProgram(read);
+         process.exit(0);
+     });
+ }

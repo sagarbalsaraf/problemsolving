@@ -1,0 +1,40 @@
+const LinkedListNode = class {
+    constructor(nodeData) {
+        this.data = nodeData;
+        this.next = null;
+    }
+};
+var addOneToLinkedList = function(head) { 
+    function reverseList(head) {
+    let prev=null
+    let next=null;
+    let current=head;
+  
+    while (current!=null){
+        next=current.next;
+        current.next=prev;
+        prev=current;
+        current=next;
+    }
+    return prev;
+}
+    head = reverseList(head);
+    let pre= null;
+    let current= head;
+    let carry = 1;
+    let sum=0;
+    
+    while(current!=null){
+        sum=current.data+carry;
+        carry=Math.floor(sum/10);
+        current.data = sum%10;
+        pre=current;
+        current= current.next;
+    }
+    if(carry>0){
+        pre.next = new LinkedListNode(carry)
+    }
+    head = reverseList(head);
+    return head;
+};
+

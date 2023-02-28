@@ -1,0 +1,15 @@
+function totalBill(N) {
+    // Write code here
+ if(N==0){
+     console.log(80);
+ }else if(N>0 && N<=50){
+     console.log(N*3+80)
+ }else if(N<=150){
+     let temp =N-50 
+     console.log(80+150+temp*5)
+ }else if(N>150){
+    
+     console.log(650+80+(N-150)*10)
+ }
+    
+}

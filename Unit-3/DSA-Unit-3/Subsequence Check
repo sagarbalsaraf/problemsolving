@@ -1,0 +1,43 @@
+function SubsequenceCheck(N,M,a,b){
+//   console.log(N,M,a,b)  
+    let i=0;
+    let j=0;
+    while(j<b.length){
+      if(a[i]==b[j]){
+          i++;
+      }
+      j++;
+    }
+    if(i==N){
+        console.log('YES')
+    }else{
+    console.log('NO')
+    }
+}
+function runProgram(input){
+    input=input.split('\n');
+    let [N,M] = input[0].split(' ').map(Number);
+    let a = input[1];
+    let b = input[2];
+    SubsequenceCheck(N,M,a,b);
+}
+if (process.env.USERNAME === "") {
+     runProgram(``);
+ } else {
+     process.stdin.resume();
+     process.stdin.setEncoding("ascii");
+     let read = "";
+     process.stdin.on("data", function (input) {
+         read += input;
+     });
+     process.stdin.on("end", function () {
+         read = read.replace(/\n$/, "");
+         read = read.replace(/\n$/, "");
+         runProgram(read);
+     });
+     process.on("SIGINT", function () {
+         read = read.replace(/\n$/, "");
+         runProgram(read);
+         process.exit(0);
+     });
+ }

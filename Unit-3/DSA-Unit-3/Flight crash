@@ -1,0 +1,52 @@
+//Enter code here
+function flightCrash(t,N,M){
+  
+}
+function runProgram(input){
+    input=input.split('\n');
+    let t =+input[0];
+    let o=[];
+    let wc=[]; 
+    let m=[]; 
+    let crew=[];
+    let line=1;
+  for(let i=0;i<t;i++){
+    let [N,M]=input[line++].trim().split(' ');
+
+        if(M=="old"){
+            o.push(N)
+        }else if(M=="woman" || M=="child"){
+            wc.push(N)
+        }else if(M=="man"){
+            m.push(N)
+        }else if(M=="crew"){
+            crew.push(N)
+        }
+  }
+    let final=[...o,...wc,...m,...crew]
+    for(let i=0;i<final.length;i++){
+        console.log(final[i])
+    
+  }
+    
+}
+if (process.env.USERNAME === "") {
+     runProgram(``);
+ } else {
+     process.stdin.resume();
+     process.stdin.setEncoding("ascii");
+     let read = "";
+     process.stdin.on("data", function (input) {
+         read += input;
+     });
+     process.stdin.on("end", function () {
+         read = read.replace(/\n$/, "");
+         read = read.replace(/\n$/, "");
+         runProgram(read);
+     });
+     process.on("SIGINT", function () {
+         read = read.replace(/\n$/, "");
+         runProgram(read);
+         process.exit(0);
+     });
+ }

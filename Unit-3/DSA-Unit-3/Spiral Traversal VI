@@ -1,0 +1,73 @@
+//Enter code here
+function spiralTraversal(n,mat){
+    let bag="";
+    let top=0;
+    let bot=n-1;
+    let left=0;
+    let right=n-1;
+    let temp=0;
+    while(temp<n*n){
+        for(let i=top;i<=bot;i++){
+        bag+=mat[i][left]+" ";
+        temp++;
+    }
+    
+    left++;
+     for(let i=left;i<=right;i++){
+        bag+=mat[bot][i]+" ";
+        temp++;
+    }
+    bot--;
+        for(i=bot;i>=top;i--){
+            bag+=mat[i][right]+" ";
+            temp++;
+        }
+    right--;
+    for(let i=right;i>=left;i--){
+      bag+=mat[top][i]+" ";
+      temp++;
+    } 
+    top++;
+    
+   
+        
+    }
+    
+    console.log(bag)
+}
+
+function runProgram(input){
+     input=input.split('\n');
+    let t=+input[0];
+    let line=1;
+    for (let i=0;i<t;i++){
+         let n=+input[line];
+         line++;
+         let mat=[];
+    for(let i=1;i<=n;i++){
+        mat.push(input[line].split(' ').map(Number))
+        line++;
+    }
+    spiralTraversal(n,mat)
+    }
+}
+if (process.env.USERNAME === "") {
+     runProgram(``);
+ } else {
+     process.stdin.resume();
+     process.stdin.setEncoding("ascii");
+     let read = "";
+     process.stdin.on("data", function (input) {
+         read += input;
+     });
+     process.stdin.on("end", function () {
+         read = read.replace(/\n$/, "");
+         read = read.replace(/\n$/, "");
+         runProgram(read);
+     });
+     process.on("SIGINT", function () {
+         read = read.replace(/\n$/, "");
+         runProgram(read);
+         process.exit(0);
+     });
+ }

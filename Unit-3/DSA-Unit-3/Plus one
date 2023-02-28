@@ -1,0 +1,46 @@
+//Enter code here
+function plusOne(n,arr){
+    
+    for(let j=arr.length-1;j>=0;j--){
+        if(arr[j]<9){
+            arr[j]=arr[j]+1;
+            return arr.join(' ')
+        }else{
+            arr[j]=0;
+        }
+    }
+       arr.unshift(1)
+    return(arr.join(' '))
+}
+function runProgram(input){
+    input=input.split('\n');
+    let t= +input[0];
+    let line=1;
+    for(let i=1;i<=t;i++){
+        let n= +input[line];
+        line++;
+        let arr = input[line].split(' ').map(Number);
+        line++;
+        console.log(plusOne(n,arr))
+    }
+}
+if (process.env.USERNAME === "") {
+     runProgram(``);
+ } else {
+     process.stdin.resume();
+     process.stdin.setEncoding("ascii");
+     let read = "";
+     process.stdin.on("data", function (input) {
+         read += input;
+     });
+     process.stdin.on("end", function () {
+         read = read.replace(/\n$/, "");
+         read = read.replace(/\n$/, "");
+         runProgram(read);
+     });
+     process.on("SIGINT", function () {
+         read = read.replace(/\n$/, "");
+         runProgram(read);
+         process.exit(0);
+     });
+ }

@@ -1,0 +1,45 @@
+//Enter code here
+function CardGame(t,Ram,Rcards,Shyam,Scards){
+    if(Math.max(...Rcards)>=Math.max(...Scards)){
+        console.log('Ram')
+    }else{
+        console.log('Shyam')
+    }
+}
+
+function runProgram(input){
+    input=input.split('\n');
+    let t=+input[0];
+    let line=1;
+    for(let i=1;i<=t;i++){
+        let Ram=+input[line];
+        line++;
+        let Rcards=input[line].split(' ').map(Number);
+        line++;
+        let Shyam=+input[line];
+        line++;
+        let Scards=input[line].split(' ').map(Number);
+        line++;
+        CardGame(t,Ram,Rcards,Shyam,Scards)
+    }
+}
+if (process.env.USERNAME === "") {
+     runProgram(``);
+ } else {
+     process.stdin.resume();
+     process.stdin.setEncoding("ascii");
+     let read = "";
+     process.stdin.on("data", function (input) {
+         read += input;
+     });
+     process.stdin.on("end", function () {
+         read = read.replace(/\n$/, "");
+         read = read.replace(/\n$/, "");
+         runProgram(read);
+     });
+     process.on("SIGINT", function () {
+         read = read.replace(/\n$/, "");
+         runProgram(read);
+         process.exit(0);
+     });
+ }
