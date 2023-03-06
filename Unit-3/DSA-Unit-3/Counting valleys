@@ -1,0 +1,44 @@
+//Enter code here
+function countingValleys(steps, path) {
+    let c = 0
+    let ans = 0
+    for(let i=0; i<steps; i++){
+        let char= path.charAt(i)
+        if(char === "U"){
+           ans++;
+        if(ans==0){
+           c++;
+        } 
+        }else {
+            ans--;
+        }
+    }
+    console.log(c)
+}
+function runProgram(input)
+{
+    input=input.split('\n');
+    let steps=+input[0];
+    let path=input[1];
+    countingValleys(steps, path)
+}
+if (process.env.USERNAME === "") {
+     runProgram(``);
+ } else {
+     process.stdin.resume();
+     process.stdin.setEncoding("ascii");
+     let read = "";
+     process.stdin.on("data", function (input) {
+         read += input;
+     });
+     process.stdin.on("end", function () {
+         read = read.replace(/\n$/, "");
+         read = read.replace(/\n$/, "");
+         runProgram(read);
+     });
+     process.on("SIGINT", function () {
+         read = read.replace(/\n$/, "");
+         runProgram(read);
+         process.exit(0);
+     });
+ }
