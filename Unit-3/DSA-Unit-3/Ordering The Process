@@ -1,0 +1,42 @@
+function work(n,arr,arr2){
+ let i=0;
+ let count=0
+ while(arr.length>0){
+ if(arr[i]==arr2[i]){
+ arr.shift()
+ arr2.shift()
+ }else{
+ let x = arr.shift()
+ arr.push(x)
+ }
+ count++
+ }
+ console.log(count)
+}
+function runProgram(input){
+ input = input.trim().split("\n");
+ let n = +input[0]
+ let arr = input[1].trim().split(" ").map(Number);
+ let arr2 = input[2].trim().split(" ").map(Number);
+ work(n,arr,arr2)
+}
+if (process.env.USERNAME === "") {
+     runProgram(``);
+ } else {
+     process.stdin.resume();
+     process.stdin.setEncoding("ascii");
+     let read = "";
+     process.stdin.on("data", function (input) {
+         read += input;
+     });
+     process.stdin.on("end", function () {
+         read = read.replace(/\n$/, "");
+         read = read.replace(/\n$/, "");
+         runProgram(read);
+     });
+     process.on("SIGINT", function () {
+         read = read.replace(/\n$/, "");
+         runProgram(read);
+         process.exit(0);
+     });
+ }
