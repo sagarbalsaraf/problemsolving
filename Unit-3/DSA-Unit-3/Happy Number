@@ -1,0 +1,48 @@
+//Enter code here
+function HappyNumber(t,n) {
+   const set = new Set()
+    let sum = n
+
+    while (sum !== 1) {
+        let newSum = 0
+        sum.toString().split('').forEach(el => newSum += el * el)
+        
+        if (set.has(newSum)) return false
+        set.add(newSum)
+        sum = newSum
+    } 
+
+    return true 
+}
+
+function runProgram(input){
+    input=input.split('\n');
+    
+    let t=+input[0];
+    let line=1;
+    for(let i=1;i<=t;i++){
+        let n=+input[line];
+        line++;
+        HappyNumber(t,n)== true ? console.log('Yes'): console.log('No')
+    }
+}
+if (process.env.USERNAME === "") {
+     runProgram(``);
+ } else {
+     process.stdin.resume();
+     process.stdin.setEncoding("ascii");
+     let read = "";
+     process.stdin.on("data", function (input) {
+         read += input;
+     });
+     process.stdin.on("end", function () {
+         read = read.replace(/\n$/, "");
+         read = read.replace(/\n$/, "");
+         runProgram(read);
+     });
+     process.on("SIGINT", function () {
+         read = read.replace(/\n$/, "");
+         runProgram(read);
+         process.exit(0);
+     });
+ }
